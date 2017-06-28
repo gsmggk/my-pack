@@ -10,7 +10,7 @@ public class PackerServiceImpl implements PackerService {
 	
 	@Override
 	public void zip(Item item) {
-		service.zipFile(item);
+		//service.zipFile(null, item);
 	}
 
 	

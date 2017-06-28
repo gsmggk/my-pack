@@ -1,10 +1,11 @@
 import com.gsmggk.mypacker.model.Item;
 import com.gsmggk.mypacker.service.PackerService;
+import com.gsmggk.mypacker.service.impl.PackerServiceImpl;
 
 
 public class Runner {
 	
-	private static PackerService pack;
+	
 	
 	
 	
@@ -17,7 +18,9 @@ public class Runner {
 	    Item item=new Item();
 	    item.setPath(path);
 	
-	     pack.zip(item);     
+	   PackerServiceImpl pack=new PackerServiceImpl();
+	   pack.zip(item);
+			
 	      
 	        
 	    }

@@ -2,6 +2,8 @@ package com.gsmggk.mypacker.model;
 
 public class Item {
 
+	private String name;
+	
 	private String path;
 
 	private Integer unpackedSize;
@@ -31,6 +33,13 @@ public class Item {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }
