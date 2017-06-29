@@ -23,9 +23,9 @@ public class UtilZipServiceImpl implements UtilZipService {
 	public ZipOutputStream openZip(String zipFilePath) throws FileNotFoundException {
 
 		LOGGER.debug("OpenZip {}", zipFilePath);
-	
-			FileOutputStream fos = new FileOutputStream(zipFilePath);
-			ZipOutputStream zos = new ZipOutputStream(fos);
+
+		FileOutputStream fos = new FileOutputStream(zipFilePath);
+		ZipOutputStream zos = new ZipOutputStream(fos);
 		return zos;
 
 	}
@@ -33,20 +33,19 @@ public class UtilZipServiceImpl implements UtilZipService {
 	@Override
 	public ZipOutputStream zipFile(ZipOutputStream zos, Item item) throws IOException {
 		ZipEntry ze = new ZipEntry(item.getName());
-	
-			zos.putNextEntry(ze);
-			FileInputStream in = new FileInputStream(item.getPath());
 
-			int len;
-			while ((len = in.read(buffer)) > 0) {
-				zos.write(buffer, 0, len);
-				
-			}
+		zos.putNextEntry(ze);
+		FileInputStream in = new FileInputStream(item.getPath());
 
-			in.close();
-			zos.closeEntry();
+		int len;
+		while ((len = in.read(buffer)) > 0) {
+			zos.write(buffer, 0, len);
 
-		
+		}
+
+		in.close();
+		zos.closeEntry();
+
 		return zos;
 
 	}
@@ -54,7 +53,7 @@ public class UtilZipServiceImpl implements UtilZipService {
 	@Override
 	public void closeZip(ZipOutputStream zos) throws IOException {
 		zos.close();
-		
+
 	}
 
 }

@@ -15,12 +15,12 @@ public class TestUtilZipServiceImpl {
 	ZipOutputStream zos;
 
 	@BeforeTest
-	public void BeforeTest() {
+	public void beforeTest() {
 		service = new UtilZipServiceImpl();
 	}
 
 	@Test
-	public void TestOpenZip() {
+	public void testOpenZip() {
 
 		String zipFilePath = "c://work/out/data.zip";
 
@@ -33,8 +33,8 @@ public class TestUtilZipServiceImpl {
 		Assert.assertNotNull(zos);
 	}
 
-	@Test(dependsOnMethods = { "TestOpenZip" })
-	public void TestZipFile() {
+	@Test(dependsOnMethods = { "testOpenZip" })
+	public void testZipFile() {
 		String name = "data.in";
 		String pathIn = "c://work/in/data.in";
 		Item item = new Item();
@@ -50,8 +50,8 @@ public class TestUtilZipServiceImpl {
 
 	}
 
-	@Test(dependsOnMethods = { "TestZipFile" })
-	public void TestCloseZip() {
+	@Test(dependsOnMethods = { "testZipFile" })
+	public void testCloseZip() {
 		try {
 			service.closeZip(zos);
 		} catch (IOException e) {
