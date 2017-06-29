@@ -11,6 +11,8 @@ public interface Zip4jService {
 
 	ZipFile openZip(String path) throws ZipException;
 
-	void zipFile(ZipFile zf, Item item);
+	void zipFile(ZipFile zf, Item item) throws ZipException;
+	
+	void cryptZip(ZipFile zf,String password);
 
 }

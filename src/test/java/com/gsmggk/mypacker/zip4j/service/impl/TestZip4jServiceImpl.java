@@ -25,7 +25,7 @@ public class TestZip4jServiceImpl {
 		try {
 		 zf= service.openZip(zipFilePath);
 		} catch (ZipException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(zf, "Must be not null");
@@ -39,7 +39,12 @@ public class TestZip4jServiceImpl {
 		item.setPath(pathIn);
 
 		item.setName(name);
-		service.zipFile(zf, item);
-
+		try {
+			service.zipFile(zf, item);
+		} catch (ZipException e) {
+			
+			e.printStackTrace();
+		}
+        
 	}
 }

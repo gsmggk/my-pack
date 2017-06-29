@@ -21,28 +21,31 @@ public class Zip4jServiceImpl implements Zip4jService {
 	}
 
 	@Override
-	public void zipFile(ZipFile zf, Item item) {
+	public void zipFile(ZipFile zipFile, Item item) throws ZipException {
 		
 		File sourceFile=new File(item.getPath());
 		ZipParameters parameters=new ZipParameters();
 		 parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
 	    parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
-	  //  parameters.setEncryptFiles(true);
-	  //  parameters.setEncryptionMethod(Zip4jConstants.ENC_METHOD_STANDARD);
-	  //  parameters.setPassword(password);
+	    parameters.setEncryptFiles(true);
+	    parameters.setEncryptionMethod(Zip4jConstants.ENC_METHOD_STANDARD);
+	    parameters.setPassword("password11");
+	    
+		
+		zipFile.addFile(sourceFile, parameters);
 	
-		try {
-			zf.addFile(sourceFile, parameters);
-		} catch (ZipException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 	}
 
 	@Override
 	public void closeZip() {
+         
+	}
 
+	@Override
+	public void cryptZip(ZipFile zipFile, String password) {
+		
+		
 	}
 
 }

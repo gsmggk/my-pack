@@ -24,35 +24,36 @@ public class UtilZipServiceImpl implements UtilZipService {
 
 		LOGGER.debug("OpenZip {}", zipFilePath);
 
-		FileOutputStream fos = new FileOutputStream(zipFilePath);
-		ZipOutputStream zos = new ZipOutputStream(fos);
-		return zos;
+		FileOutputStream fileOutputStream = new FileOutputStream(zipFilePath);
+		ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
+		return zipOutputStream;
 
 	}
 
 	@Override
-	public ZipOutputStream zipFile(ZipOutputStream zos, Item item) throws IOException {
-		ZipEntry ze = new ZipEntry(item.getName());
+	public ZipOutputStream zipFile(ZipOutputStream zipOutputStreem, Item item) throws IOException {
+		ZipEntry zipEntry = new ZipEntry(item.getName());
 
-		zos.putNextEntry(ze);
-		FileInputStream in = new FileInputStream(item.getPath());
+		zipOutputStreem.putNextEntry(zipEntry);
+		FileInputStream inputStreem = new FileInputStream(item.getPath());
 
-		int len;
-		while ((len = in.read(buffer)) > 0) {
-			zos.write(buffer, 0, len);
+		int length;
+		while ((length = inputStreem.read(buffer)) > 0) {
+			zipOutputStreem.write(buffer, 0, length);
 
 		}
 
-		in.close();
-		zos.closeEntry();
+		inputStreem.close();
+		zipOutputStreem.closeEntry();
 
-		return zos;
+		return zipOutputStreem;
 
 	}
 
 	@Override
-	public void closeZip(ZipOutputStream zos) throws IOException {
-		zos.close();
+	public void closeZip(ZipOutputStream zipOutputStreem)
+			throws IOException {
+		zipOutputStreem.close();
 
 	}
 

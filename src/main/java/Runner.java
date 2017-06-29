@@ -19,7 +19,7 @@ public class Runner {
 	    item.setPath(path);
 	
 	   PackerServiceImpl pack=new PackerServiceImpl();
-	   pack.zip(item);
+	   pack.pack(item);
 			
 	      
 	        

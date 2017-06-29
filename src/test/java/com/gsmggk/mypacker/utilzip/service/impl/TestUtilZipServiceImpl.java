@@ -24,10 +24,10 @@ public class TestUtilZipServiceImpl {
 
 		String zipFilePath = "c://work/out/data.zip";
 
-		try {
+		try  {
 			zos = service.openZip(zipFilePath);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(zos);
@@ -44,7 +44,7 @@ public class TestUtilZipServiceImpl {
 		try {
 			service.zipFile(zos, item);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
